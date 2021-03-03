@@ -14,7 +14,7 @@ var endState = 0;
 var particle
 var divisionHeight = 300;
 var score = 0;
-var counter = 0;
+var counter = 1;
 var backgroundImg
 
 function preload(){
@@ -64,15 +64,10 @@ function setup() {
 
 function draw() {
   if(gameState===playState){
-    if(frameCount%90===0){
-      particle=new Particle(random(width/2-30, width/2+30), 10,10)
-      particles.push(particle);
-    }
     background("black");
   textSize(20)
   text("Score : "+score,20,30);
   Engine.update(engine);
- 
   
    for (var i = 0; i < plinkos.length; i++) {
      
@@ -116,4 +111,11 @@ function draw() {
   score=score
     }
 
+  }
+
+  function keyPressed(){
+    if(keyCode===32){
+      particle=new Particle(random(width/2-30, width/2+30), 10,10)
+      particles.push(particle);
+    }
   }
